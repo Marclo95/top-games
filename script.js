@@ -1,6 +1,6 @@
 const gamesList = [
 	{
-		title: "Tekken",
+	title: "Tekken",
 		year: 1994,
 		imageUrl:
 			"https://cdn.dashfight.com/bcf6a9046a9ea4c1070d4aedb2981103c978a704.png",
@@ -41,10 +41,40 @@ const gamesList = [
 			"https://gaming-cdn.com/images/products/146/orig/the-elder-scrolls-v-skyrim-pc-jeu-steam-europe-cover.jpg?v=1661270991",
 		id: 6,
 	},
-    function writeDom() {
-        gamesList.forEach((game) => {
-            const articleContainer = document.querySelector(".row")
-            articleContainer.innerHTML = "Hello !!"
-        })
-    }
 ]
+
+function writeDom() {
+	gamesList.forEach((game) => {
+		const articleContainer = document.querySelector(".row")
+		articleContainer.innerHTML += `                <article class="col">
+                    <div class="card shadow-sm">
+                        <img src="${game.imageUrl}" alt="${game.title}" class="card-img-top" />
+                        <div class="card-body">
+                        <h3 class="card-title">${game.title}</h3>
+                            <p class="card-text">${game.year}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button 
+                                    type="button" 
+                                    class="btn btn-sm btn-outline-secondary"
+                                    data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                    >
+                                        View
+                                    </button>
+                                    <button 
+                                    type="button" 
+                                    class="btn btn-sm btn-outline-secondary"
+                                    data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                    >
+                                        Edit
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>`
+	})
+}
+
+writeDom()
+
