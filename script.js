@@ -129,6 +129,11 @@ function editModal(gameId) {
 				year: selectedGame.year,
 				imageUrl: selectedGame.imageUrl,
 			})
+            document
+				.querySelector('button[type="submit"]')
+				.addEventListener("click", () =>
+					updateGames(title.value, year.value, imageUrl.value, gameId)
+				)
 		})
 	})
 }
@@ -140,7 +145,18 @@ function modifyFom(gameData) {
 	form.imageUrl.value = gameData.imageUrl
 }
 function modifyModal(modalTitle, modalBody) {
-	// Écrir le nom du jeu dans le titre du modal
+	// Écrire le nom du jeu dans le titre du modal
 	document.querySelector(".modal-title").textContent = modalTitle
+	// Écrire dans le corps du modal
 	document.querySelector(".modal-body").innerHTML = modalBody
+	// Écrire dans le footer
+	document.querySelector(".modal-footer").innerHTML = `
+		<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+			Close
+		</button>
+		<button type="submit" data-bs-dismiss="modal" class="btn btn-primary">Submit</button>
+</form>`
+}
+function updateGames(title, year, imageUrl, gameId) {
+	console.log(title, year, imageUrl, gameId)
 }
