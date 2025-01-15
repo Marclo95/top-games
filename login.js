@@ -4,32 +4,28 @@ form.addEventListener("submit", (e) => {
 	e.preventDefault()
 	const email = form.email.value
 	const userName = form.userName.value
-
-    // Validation du formulaire
-    try {
+    try{
         validateEmail(email)
-    } catch (error) {
-        showError(error)
+    }catch (error) {
+        showError (error)
         return console.error(error)
     }
-
     try {
         validateName(userName)
     } catch (error) {
-        showError(error)
+        showError (error)
         return console.error(error)
     }
 
-    const formdata = {
-        email,
-        userName,
-    }
-
-    logIn(formdata)
+	const formdata = {
+		email,
+		userName,
+	}
+	logIn(formdata)
 })
 
-
 // input validation
+
 function validateName(input) {
 	if (!input || input.trim() === "") {
 		throw new Error("L'user name est vide !")
@@ -43,7 +39,6 @@ function validateName(input) {
 	}
 }
 
-
 function validateEmail(input) {
 	if (!input || input.trim() === "") {
 		throw new Error("L'email name est vide")
@@ -55,7 +50,6 @@ function validateEmail(input) {
 	}
 }
 
-
 function showError(error) {
 	document.querySelector(".alert").innerText = error
 	document.querySelector(".alert").classList.remove("d-none")
@@ -63,7 +57,6 @@ function showError(error) {
 		document.querySelector(".alert").classList.add("d-none")
 	}, 2100)
 }
-
 
 function logIn(formdata) {
 	const url = "http://localhost:3000/api/users/login"
